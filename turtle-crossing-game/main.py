@@ -16,9 +16,12 @@ screen.onkeypress(fun=timmy.move, key="Up")
 game_is_on = True
 board = Scoreboard()
 cars = []
+loops_number = 0
 while game_is_on:
-    for i in range(1):
-        cars.append(CarManager())
+    #Generates a new car after every 6th iteration
+    if loops_number % 6 == 0:
+        for i in range(1):
+            cars.append(CarManager())
     time.sleep(sleep_time)
     for car in cars:
         # collision
@@ -33,6 +36,7 @@ while game_is_on:
         sleep_time *= 0.5
 
     screen.update()
+    loops_number += 1
 
 
 screen.exitonclick()
